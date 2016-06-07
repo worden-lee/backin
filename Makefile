@@ -1,6 +1,6 @@
 ## make a list of common words to mine for nested pairs
-words : /usr/share/dict/cracklib-small
-	perl -ne "print unless (/\'s$$/ or /^[A-Z]+$$/)" < $< > $@
+words : ./words.pl /usr/share/dict/cracklib-small
+	./words.pl
 
 ## make a compact list of matching pairs, by number
 graph.csv : ./graph.pl words
