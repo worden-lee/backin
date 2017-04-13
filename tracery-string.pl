@@ -4,6 +4,17 @@ open WORDS, "<words" or die "can't read words file";
 chomp @words;
 
 open GRAPHTXT, "<graph.txt" or die "can't read graph.txt";
+print <<END_INTRO;
+{
+	"origin":["#[#nh#]putting#"],
+	"putting":["#hifreq#","#hifreq#","#hifreq#","#lofreq#"],
+	"hifreq":["Putting the #n# #backin# #h#"],
+	"lofreq":["#[#pron#]theyput#","#[#pron#]theyput#","#[#pron#]theyput#","#[#pron#]theyput#","You! You put the #n# #backin# #h#. 😉👉"],
+	"theyput":["#they.capitalize# #put# the #n# #backin# #h#"],
+	"pron":["[they:they][put:put]","[they:he][put:puts]","[they:she][put:puts]","[they:we][put:put]"],
+	"backin":["back in", "back in", "in", "in", "back into"],
+END_INTRO
+print "	\"nh\":[";
 while (<GRAPHTXT>) {
 	chomp;
 	my($n,$h) = split(/ /,$_);
@@ -11,3 +22,5 @@ while (<GRAPHTXT>) {
 	#print $h
 	print "\"[n:$n][h:$h]\","
 }
+print "]\n}\n";
+
