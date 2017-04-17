@@ -15,12 +15,15 @@ print <<END_INTRO;
 	"backin":["back in", "back in", "in", "in", "back into"],
 END_INTRO
 print "	\"nh\":[";
+my $comma = 0;
 while (<GRAPHTXT>) {
 	chomp;
 	my($n,$h) = split(/ /,$_);
 	#print $n
 	#print $h
-	print "\"[n:$n][h:$h]\","
+	if ($comma) { print ','; }
+	print "\"[n:$n][h:$h]\"";
+	$comma = 1;
 }
 print "]\n}\n";
 
